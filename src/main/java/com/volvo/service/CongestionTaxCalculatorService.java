@@ -59,7 +59,7 @@ public class CongestionTaxCalculatorService {
             for (Map.Entry<LocalDate, List<LocalDateTime>> datesByDayEntry :
                     datesByDay.entrySet()) {
                 totalFee = totalFee.add(taxProcessor.
-                        calculateTaxForSingleDay(datesByDayEntry.getValue()));
+                        calculateTaxPerDay(datesByDayEntry.getValue()));
             }
         }
 

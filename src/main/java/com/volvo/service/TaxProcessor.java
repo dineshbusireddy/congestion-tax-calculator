@@ -30,7 +30,7 @@ public class TaxProcessor {
     @Value("${single-charge.time-in-minutes}")
     private int singleChargeTime;
 
-    @Value("${maximum-tax-per-day-in-seks:0}")
+    @Value("${maximum-tax-per-day:1000}")
     private BigDecimal maximumTaxPerDay;
 
     @Autowired
@@ -45,7 +45,7 @@ public class TaxProcessor {
      * @param dates the list {@link LocalDateTime} the vehicle passes in tolls
      * @return the calculated tax
      */
-    public BigDecimal calculateTaxForSingleDay(List<LocalDateTime> dates) {
+    public BigDecimal calculateTaxPerDay(List<LocalDateTime> dates) {
         BigDecimal totalTax = BigDecimal.ZERO;
         LocalDateTime singleChargeIntervalStartTime = dates.get(ZERO);
         BigDecimal singleChargeMaximumTax = taxCalculator.calculateTax(singleChargeIntervalStartTime);

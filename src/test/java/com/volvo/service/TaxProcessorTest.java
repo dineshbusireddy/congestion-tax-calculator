@@ -37,7 +37,7 @@ class TaxProcessorTest {
     void testWithSingleDate() {
         when(taxCalculator.
                 calculateTax(any(LocalDateTime.class))).thenReturn(BigDecimal.valueOf(TestConstants.FIVE));
-        assertEquals(BigDecimal.valueOf(TestConstants.FIVE), taxProcessor.calculateTaxForSingleDay(createDates("2013-01-07 06:00:00")));
+        assertEquals(BigDecimal.valueOf(TestConstants.FIVE), taxProcessor.calculateTaxPerDay(createDates("2013-01-07 06:00:00")));
     }
 
     @Test
@@ -45,7 +45,7 @@ class TaxProcessorTest {
         when(taxCalculator.
                 calculateTax(any(LocalDateTime.class))).thenReturn(BigDecimal.valueOf(TestConstants.FIVE));
         assertEquals(BigDecimal.valueOf(TestConstants.FIVE),
-                taxProcessor.calculateTaxForSingleDay(createDates("2013-01-07 06:00:00", "2013-01-07 06:30:00", "2013-01-07 06:45:00")));
+                taxProcessor.calculateTaxPerDay(createDates("2013-01-07 06:00:00", "2013-01-07 06:30:00", "2013-01-07 06:45:00")));
     }
 
     @Test
@@ -55,7 +55,7 @@ class TaxProcessorTest {
         when(taxCalculator.
                 calculateTax(stringToDate("2013-01-07 06:45:00"))).thenReturn(BigDecimal.valueOf(TestConstants.SEVEN));
         assertEquals(BigDecimal.valueOf(TestConstants.SEVEN),
-                taxProcessor.calculateTaxForSingleDay(createDates("2013-01-07 06:00:00", "2013-01-07 06:45:00")));
+                taxProcessor.calculateTaxPerDay(createDates("2013-01-07 06:00:00", "2013-01-07 06:45:00")));
     }
 
     @Test
@@ -63,7 +63,7 @@ class TaxProcessorTest {
         when(taxCalculator.
                 calculateTax(any(LocalDateTime.class))).thenReturn(BigDecimal.valueOf(TestConstants.FIVE));
         assertEquals(BigDecimal.TEN,
-                taxProcessor.calculateTaxForSingleDay(createDates("2013-01-07 06:00:00",
+                taxProcessor.calculateTaxPerDay(createDates("2013-01-07 06:00:00",
                         "2013-01-07 06:30:00",
                         "2013-01-07 06:45:00",
                         "2013-01-07 06:45:01")));
@@ -74,7 +74,7 @@ class TaxProcessorTest {
         when(taxCalculator.
                 calculateTax(any(LocalDateTime.class))).thenReturn(BigDecimal.TEN);
         assertEquals(BigDecimal.valueOf(TestConstants.THIRTY),
-                taxProcessor.calculateTaxForSingleDay(createDates(
+                taxProcessor.calculateTaxPerDay(createDates(
                         "2013-01-07 06:00:00",
                         "2013-01-07 08:00:00",
                         "2013-01-07 10:00:00",

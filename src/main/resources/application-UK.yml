@@ -3,7 +3,7 @@ currency: EUR
 single-charge:
   time-in-minutes: 70
 
-maximum-tax-per-day-in-seks: 6
+maximum-tax-per-day: 8
 
 tax-exempt:
   weekDays:

@@ -38,7 +38,7 @@ class CongestionTaxCalculatorServiceTest {
         when(taxExemptChecker.isTaxFreeVehicle(VehicleType.EMERGENCY)).thenReturn(true);
         when(taxExemptChecker.isTaxFreeVehicle(VehicleType.CAR)).thenReturn(false);
         when(taxProcessor.
-                calculateTaxForSingleDay(anyList())).thenReturn(BigDecimal.TEN);
+                calculateTaxPerDay(anyList())).thenReturn(BigDecimal.TEN);
     }
 
     @Test

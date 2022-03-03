@@ -3,7 +3,7 @@ currency: SEK
 single-charge:
   time-in-minutes: 60
 
-maximum-tax-per-day-in-seks: 60
+maximum-tax-per-day: 60
 
 tax-exempt:
   weekDays:
