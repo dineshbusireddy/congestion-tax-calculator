@@ -14,7 +14,17 @@ import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.volvo.constants.TestConstants.*;
+import static com.volvo.constants.TestConstants.FORTY_FIVE;
+import static com.volvo.constants.TestConstants.NINE;
+import static com.volvo.constants.TestConstants.SEVEN;
+import static com.volvo.constants.TestConstants.SIX;
+import static com.volvo.constants.TestConstants.TEN;
+import static com.volvo.constants.TestConstants.TEST_YEAR;
+import static com.volvo.constants.TestConstants.THIRTY;
+import static com.volvo.constants.TestConstants.TIME_INTERVAL_END_GREATER_THAN_START;
+import static com.volvo.constants.TestConstants.TIME_INTERVAL_START_GREATER_THAN_END;
+import static com.volvo.constants.TestConstants.TWO;
+import static com.volvo.constants.TestConstants.ZERO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -87,6 +97,7 @@ class TaxCalculatorImplTest {
         TaxableIntervalsConfig.TaxInterval taxInterval = new TaxableIntervalsConfig.TaxInterval();
         taxInterval.setInterval(interval);
         taxInterval.setPrice(price);
+
         return Arrays.asList(taxInterval);
     }
 }

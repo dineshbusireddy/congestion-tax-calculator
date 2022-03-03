@@ -17,7 +17,15 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-import static com.volvo.constants.TestConstants.*;
+import static com.volvo.constants.TestConstants.FIVE;
+import static com.volvo.constants.TestConstants.ONE;
+import static com.volvo.constants.TestConstants.SEVEN;
+import static com.volvo.constants.TestConstants.SIX;
+import static com.volvo.constants.TestConstants.TEST_YEAR;
+import static com.volvo.constants.TestConstants.TWENTY_EIGHT;
+import static com.volvo.constants.TestConstants.TWENTY_SEVEN;
+import static com.volvo.constants.TestConstants.TWO;
+import static com.volvo.constants.TestConstants.ZERO;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;

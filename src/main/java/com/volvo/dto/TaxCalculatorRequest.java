@@ -11,6 +11,14 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Holds request info
+ * <br>
+ * <br>
+ *
+ * @author Dinesh Kumar Busireddy
+ * @since 03-02-2022
+ */
 @Getter
 @Setter
 public class TaxCalculatorRequest {

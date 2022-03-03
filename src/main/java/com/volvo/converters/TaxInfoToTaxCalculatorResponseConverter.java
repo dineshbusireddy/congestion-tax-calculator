@@ -5,6 +5,14 @@ import com.volvo.dto.TaxCalculatorResponse;
 import com.volvo.model.TaxInfo;
 import org.springframework.stereotype.Component;
 
+/**
+ * Converts from {@link TaxInfo} to {@link TaxCalculatorResponse}
+ * <br>
+ * <br>
+ *
+ * @author Dinesh Kumar Busireddy
+ * @since 03-02-2022
+ */
 @Component
 public class TaxInfoToTaxCalculatorResponseConverter implements Converter<TaxInfo, TaxCalculatorResponse> {
 

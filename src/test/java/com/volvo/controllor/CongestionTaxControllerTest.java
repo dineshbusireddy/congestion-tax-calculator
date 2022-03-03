@@ -79,6 +79,7 @@ public class CongestionTaxControllerTest {
                 readValue(inputStream, TestDataProvider.class);
         List<Arguments> arguments = testDataProvider.getTestDataDetails()
                 .stream().map(Arguments::of).collect(Collectors.toList());
+
         return arguments.stream();
     }
 

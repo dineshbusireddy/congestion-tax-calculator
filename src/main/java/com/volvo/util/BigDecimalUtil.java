@@ -1,12 +1,29 @@
 package com.volvo.util;
 
-import static com.volvo.constants.Constants.ZERO;
-
 import java.math.BigDecimal;
 
+import static com.volvo.constants.Constants.ZERO;
+
+/**
+ * Provides utility methods related to {@link BigDecimal}
+ * <br>
+ * <br>
+ *
+ * @author Dinesh Kumar Busireddy
+ * @since 03-02-2022
+ */
 public class BigDecimalUtil {
+
+    /**
+     * Compares two {@link BigDecimal} values by provided operator
+     *
+     * @param firstNum  the {@link BigDecimal}
+     * @param operator  the {@link Operator}
+     * @param secondNum the {@link BigDecimal}
+     * @return true if satisfy the provided operator else false
+     */
     public static boolean check(BigDecimal firstNum, Operator operator, BigDecimal secondNum) {
-        if (firstNum == null || secondNum == null) {
+        if (ObjectUtil.isNull(firstNum) || ObjectUtil.isNull(secondNum)) {
             return false;
         }
         int value = firstNum.compareTo(secondNum);

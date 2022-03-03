@@ -8,6 +8,14 @@ import org.springframework.context.annotation.Configuration;
 import java.time.DayOfWeek;
 import java.util.Set;
 
+/**
+ * Holds tax free dates and vehicle info which will read from application-XXX.yml file
+ * <br>
+ * <br>
+ *
+ * @author Dinesh Kumar Busireddy
+ * @since 03-02-2022
+ */
 @Configuration
 @ConfigurationProperties(prefix = "tax-exempt")
 @Getter

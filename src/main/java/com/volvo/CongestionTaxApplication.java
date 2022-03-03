@@ -9,6 +9,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
+/**
+ * Main class
+ * <br>
+ * <br>
+ *
+ * @author Dinesh Kumar Busireddy
+ * @since 03-02-2022
+ */
 @SpringBootApplication
 @OpenAPIDefinition(info = @Info(title = "Volvo Cars", version = "2.0",
         description = "Congestion Tax Calculator"))

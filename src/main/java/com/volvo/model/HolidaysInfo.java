@@ -8,6 +8,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Holds holidays details which will read from application-XXX.yml file
+ * <br>
+ * <br>
+ *
+ * @author Dinesh Kumar Busireddy
+ * @since 03-02-2022
+ */
 @Configuration
 @ConfigurationProperties(prefix = "holidays")
 @Getter
@@ -25,8 +33,6 @@ public class HolidaysInfo {
     public HolidaysOfYear getHolidaysByYear(int year) {
         return this.years.get(year);
     }
-
-
 
 
 }

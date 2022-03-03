@@ -7,6 +7,14 @@ import lombok.Setter;
 import java.time.Month;
 import java.util.List;
 
+/**
+ * Holds holidays of month which will read from application-XXX.yml file
+ * <br>
+ * <br>
+ *
+ * @author Dinesh Kumar Busireddy
+ * @since 03-02-2022
+ */
 @Getter
 @Setter
 public class HolidaysOfMonth {

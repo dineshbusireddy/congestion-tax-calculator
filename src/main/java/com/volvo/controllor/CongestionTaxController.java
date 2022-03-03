@@ -44,6 +44,7 @@ public class CongestionTaxController {
         TaxInfo taxInfo = congestionTaxCalculatorService.calculateTax(
                 VehicleType.getVehicleType(taxCalculatorRequest.getVehicleType()),
                 taxCalculatorRequest.getDates());
+
         return responseConverter.convert(taxInfo);
     }
 }

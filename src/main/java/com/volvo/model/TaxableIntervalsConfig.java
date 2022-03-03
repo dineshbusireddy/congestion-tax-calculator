@@ -16,6 +16,14 @@ import static com.volvo.constants.Constants.TIME_FORMATTER;
 import static com.volvo.constants.Constants.TWO;
 import static com.volvo.constants.Constants.ZERO;
 
+/**
+ * Holds taxable intervals and pricing which will read from application-XXX.yml file
+ * <br>
+ * <br>
+ *
+ * @author Dinesh Kumar Busireddy
+ * @since 03-02-2022
+ */
 @Configuration
 @ConfigurationProperties(prefix = "tax-intervals")
 @Getter

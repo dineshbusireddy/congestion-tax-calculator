@@ -38,6 +38,7 @@ public enum VehicleType {
         if (StringUtil.isNotEmpty(type)) {
             result = VEHICLE_TYPES.get(type.toUpperCase());
         }
+
         return result;
     }
 }

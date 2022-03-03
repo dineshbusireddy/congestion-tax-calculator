@@ -8,11 +8,18 @@ import com.volvo.exceptions.InvalidInputException;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * To deserialize json to date
+ * <br>
+ * <br>
+ *
+ * @author Dinesh Kumar Busireddy
+ * @since 03-02-2022
+ */
 public class DateDeserializer extends StdDeserializer<List<LocalDateTime>> {
 
     public DateDeserializer() {
