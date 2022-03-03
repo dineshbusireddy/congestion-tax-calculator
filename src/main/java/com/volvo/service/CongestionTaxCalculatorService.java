@@ -3,6 +3,7 @@ package com.volvo.service;
 import com.volvo.checkers.TaxExemptChecker;
 import com.volvo.model.TaxInfo;
 import com.volvo.model.VehicleType;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,9 @@ import java.util.Map;
  * @since 03-02-2022
  */
 @Service
+@Slf4j
 public class CongestionTaxCalculatorService {
+    private static final String CLASS_NAME = CongestionTaxCalculatorService.class.getSimpleName();
 
     @Autowired
     private TaxExemptChecker taxExemptChecker;
@@ -46,6 +49,8 @@ public class CongestionTaxCalculatorService {
      * @return the calculated {@link TaxInfo}
      */
     public TaxInfo calculateTax(VehicleType vehicleType, List<LocalDateTime> dates) {
+        String method = CLASS_NAME + ".calculateTax: ";
+        long startTime = System.currentTimeMillis();
         BigDecimal totalFee = BigDecimal.ZERO;
         if (!taxExemptChecker.isTaxFreeVehicle(vehicleType)) {
             Collections.sort(dates);
@@ -58,6 +63,7 @@ public class CongestionTaxCalculatorService {
             }
         }
 
+        log.debug(method + " Time took = " + (System.currentTimeMillis() - startTime));
         return new TaxInfo(totalFee, currency);
     }
 

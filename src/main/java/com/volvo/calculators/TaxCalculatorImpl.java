@@ -45,22 +45,57 @@ public class TaxCalculatorImpl implements TaxCalculator {
      * @param taxInterval          the configured {@link com.volvo.model.TaxableIntervalsConfig.TaxInterval}
      * @return true if any tax rule matches else false
      */
-    private boolean isEntryTimeFallUnderTaxIntervals(LocalDateTime tollEntryDateAndTime,
-                                                     TaxableIntervalsConfig.TaxInterval taxInterval) {
-        boolean isInBetween;
-        LocalTime entryTime = LocalTime.of(tollEntryDateAndTime.getHour(), tollEntryDateAndTime.getMinute());
-        if (taxInterval.getEndTime().isAfter(taxInterval.getStartTime())) {
-            isInBetween = (taxInterval.getStartTime().isBefore(entryTime)
-                    || taxInterval.getStartTime().equals(entryTime))
-                    && (taxInterval.getEndTime().isAfter(entryTime)
-                    || taxInterval.getEndTime().equals(entryTime));
+    private boolean isEntryTimeFallUnderTaxIntervals(
+            LocalDateTime tollEntryDateAndTime,
+            TaxableIntervalsConfig.TaxInterval taxInterval
+    ) {
+        boolean isInTaxableRange;
+        LocalTime entryTime = LocalTime.of(tollEntryDateAndTime.getHour(),
+                tollEntryDateAndTime.getMinute());
+        if (!isEntryTimeFallUnderTwoDates(taxInterval)) {
+            isInTaxableRange = isEntryTimeEqualToStartOrEndInterval(entryTime, taxInterval)
+                    || isEntryTimeAfterStartOrBeforeEndInterval(entryTime, taxInterval);
         } else {
-            isInBetween = entryTime.isAfter(taxInterval.getStartTime())
-                    || entryTime.equals(taxInterval.getStartTime())
-                    || entryTime.isBefore(taxInterval.getEndTime())
-                    || entryTime.equals(taxInterval.getEndTime());
+            isInTaxableRange = isEntryInTheRangeOfIntervalOrEqualToStartOrEndInterval(entryTime, taxInterval);
         }
 
-        return isInBetween;
+        return isInTaxableRange;
     }
+
+    private boolean isEntryInTheRangeOfIntervalOrEqualToStartOrEndInterval(
+            LocalTime entryTime,
+            TaxableIntervalsConfig.TaxInterval taxInterval
+    ) {
+        return isEntryInTheRangeOfStartAndEndInterval(entryTime, taxInterval)
+                || isEntryTimeEqualToStartOrEndInterval(entryTime, taxInterval);
+    }
+
+    private boolean isEntryTimeEqualToStartOrEndInterval(
+            LocalTime entryTime,
+            TaxableIntervalsConfig.TaxInterval taxInterval
+    ) {
+        return taxInterval.getStartTime().equals(entryTime)
+                || taxInterval.getEndTime().equals(entryTime);
+    }
+
+    private boolean isEntryInTheRangeOfStartAndEndInterval(
+            LocalTime entryTime,
+            TaxableIntervalsConfig.TaxInterval taxInterval
+    ) {
+        return taxInterval.getStartTime().isBefore(entryTime)
+                && taxInterval.getEndTime().isAfter(entryTime);
+    }
+
+    private boolean isEntryTimeFallUnderTwoDates(TaxableIntervalsConfig.TaxInterval taxInterval) {
+        return taxInterval.getEndTime().isAfter(taxInterval.getStartTime());
+    }
+
+    private boolean isEntryTimeAfterStartOrBeforeEndInterval(
+            LocalTime entryTime,
+            TaxableIntervalsConfig.TaxInterval taxInterval
+    ) {
+        return entryTime.isAfter(taxInterval.getStartTime())
+                || entryTime.isBefore(taxInterval.getEndTime());
+    }
+
 }
