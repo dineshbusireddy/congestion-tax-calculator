@@ -1,0 +1,228 @@
+testDataDetails:
+  - testCaseName: "Invalid Vehicle type"
+    input:
+      vehicleType: ABC
+      dates: [ "2013-02-27T15:29:03.836Z" ]
+    expected:
+      errors: [ "Invalid Vehicle Type" ]
+
+  - testCaseName: "Missing Vehicle Type"
+    input:
+      dates: [ "2013-02-27T15:29:03.836Z" ]
+    expected:
+      errors: [ "Vehicle Type Required" ]
+
+  - testCaseName: "Missing Dates"
+    input:
+      vehicleType: MOTORBIKE
+    expected:
+      errors: [ "Dates Required" ]
+
+  - testCaseName: "Invalid date"
+    input:
+      vehicleType: MOTORBIKE
+      dates: [ "2013-02-27 15" ]
+    expected:
+      errors: [ "Invalid Dates provided. Format should be either 2013-01-01 23:59:59 or 2013-01-01T23:59:59.000Z" ]
+
+  - testCaseName: "Tax exempt vehicle Motorcycles"
+    input:
+      vehicleType: Motorcycles
+      dates: [ "2013-02-27T07:59",
+               "2013-02-27T08:01:03",
+               "2013-02-27T09:03:03.836" ]
+    expected:
+      tax: 0
+
+  - testCaseName: "Tax exempt vehicle Foreign"
+    input:
+      vehicleType: Motorcycles
+      dates: [ "2013-02-27T07:59" ]
+    expected:
+      tax: 0
+
+  - testCaseName: "Free on Holiday"
+    input:
+      vehicleType: cAR
+      dates: [ "2013-01-01 10:00:00" ]
+    expected:
+      tax: 0
+
+  - testCaseName: "Free on Holiday June 21"
+    input:
+      vehicleType: cAR
+      dates: [ "2013-06-21 10:00:00" ]
+    expected:
+      tax: 0
+
+  - testCaseName: "Free on day before Holiday June 20"
+    input:
+      vehicleType: cAR
+      dates: [ "2013-06-20 10:00:00" ]
+    expected:
+      tax: 0
+
+  - testCaseName: "Free on Holiday Nov 01"
+    input:
+      vehicleType: cAR
+      dates: [ "2013-06-20 10:00:00" ]
+    expected:
+      tax: 0
+
+  - testCaseName: "Free on day before Holiday Oct 31"
+    input:
+      vehicleType: cAR
+      dates: [ "2013-10-31 10:00:00" ]
+    expected:
+      tax: 0
+
+  - testCaseName: "Free on Weekends Sunday"
+    input:
+      vehicleType: cAR
+      dates: [ "2013-01-06 10:00:00" ]
+    expected:
+      tax: 0
+
+  - testCaseName: "Free on Weekends Saturday"
+    input:
+      vehicleType: motOrbike
+      dates: [ "2013-01-05 10:00:00" ]
+    expected:
+      tax: 0
+
+  - testCaseName: "Free during night"
+    input:
+      vehicleType: motorbike
+      dates: [ "2013-01-14 21:00:00" ]
+    expected:
+      tax: 0
+
+  - testCaseName: "Free during night at 18:30"
+    input:
+      vehicleType: motorbike
+      dates: [ "2013-01-14 18:30:00" ]
+    expected:
+      tax: 0
+
+  - testCaseName: "Free during night at 23:59"
+    input:
+      vehicleType: motorbike
+      dates: [ "2013-01-14 23:59:59" ]
+    expected:
+      tax: 0
+
+  - testCaseName: "Free during night at 12 AM"
+    input:
+      vehicleType: motorbike
+      dates: [ "2013-01-14 00:00:00" ]
+    expected:
+      tax: 0
+
+  - testCaseName: "Free during night 05:59"
+    input:
+      vehicleType: motorbike
+      dates: [ "2013-01-14 05:59:59" ]
+    expected:
+      tax: 0
+
+  - testCaseName: "Tax in between 06:00 to 06:29"
+    input:
+      vehicleType: Motorbike
+      dates: [ "2013-01-07 06:15:00" ]
+    expected:
+      tax: 8
+
+  - testCaseName: "Tax at 06:00"
+    input:
+      vehicleType: Motorbike
+      dates: [ "2013-01-07 06:00:00" ]
+    expected:
+      tax: 8
+
+  - testCaseName: "Tax at 06:29"
+    input:
+      vehicleType: car
+      dates: [ "2013-01-07 06:29:00" ]
+    expected:
+      tax: 8
+
+  - testCaseName: "Tax at 07:59"
+    input:
+      vehicleType: Car
+      dates: [ "2013-02-27 07:59:03" ]
+    expected:
+      tax: 18
+
+  - testCaseName: "Tax at 18:29"
+    input:
+      vehicleType: Car
+      dates: [ "2013-02-27 18:29:59" ]
+    expected:
+      tax: 8
+
+  - testCaseName: "Single charge with not sorted ordered dates"
+    input:
+      vehicleType: MOTORBIKE
+      dates: [ "2013-02-27 15:29:03.836",
+               "2013-02-27T14:59:03Z" ]
+    expected:
+      tax: 13
+
+  - testCaseName: "Highest tax value in Single charge duration"
+    input:
+      vehicleType: Car
+      dates: [ "2013-02-27T14:59:00.000Z",
+               "2013-02-27T15:29:00.000Z",
+               "2013-02-27T15:59:00.000Z" ]
+    expected:
+      tax: 18
+
+  - testCaseName: "Highest tax value in Single charge duration 2"
+    input:
+      vehicleType: Car
+      dates: [ "2013-02-27T07:15:00.000Z",
+               "2013-02-27T06:29:00.000Z" ]
+    expected:
+      tax: 18
+
+  - testCaseName: "Single charge with one date beyond single charge duration"
+    input:
+      vehicleType: Car
+      dates: [ "2013-02-27T15:29:03.836Z",
+               "2013-02-27T14:59:03.836Z",
+               "2013-02-27T18:29:03.836Z" ]
+    expected:
+      tax: 21
+
+  - testCaseName: "Max tax per day scenario"
+    input:
+      vehicleType: Car
+      dates: [ "2013-02-27T14:59:03.836Z",
+               "2013-02-27T15:29:03.836Z",
+               "2013-02-27T15:30:03.836Z",
+               "2013-02-27T16:00:03.836Z",
+               "2013-02-27T17:00:03.836Z",
+               "2013-02-27T07:59:03.836Z",
+               "2013-02-27T08:01:03.836Z",
+               "2013-02-27T09:03:03.836Z",
+               "2013-02-27T10:04:03.836Z",
+               "2013-02-27T11:05:03.836Z" ]
+    expected:
+      tax: 60
+
+  - testCaseName: "Max tax per day scenario and one with different date"
+    input:
+      vehicleType: Car
+      dates: [ "2013-02-27T07:59:03.836Z",
+               "2013-02-27T08:01:03.836Z",
+               "2013-02-27T09:03:03.836Z",
+               "2013-02-27T10:04:03.836Z",
+               "2013-02-27T11:05:03.836Z",
+               "2013-02-27T14:59:03.836Z",
+               "2013-02-27T15:29:03.836Z",
+               "2013-02-27T15:30:03.836Z",
+               "2013-02-27T16:00:03.836Z",
+               "2013-02-27T17:00:03.836Z",
+               "2013-02-28T18:00:03.836Z" ]
+    expected:
+      tax: 68

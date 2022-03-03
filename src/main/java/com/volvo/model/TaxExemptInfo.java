@@ -1,0 +1,24 @@
+package com.volvo.model;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
+import java.time.DayOfWeek;
+import java.util.Set;
+
+@Configuration
+@ConfigurationProperties(prefix = "tax-exempt")
+@Getter
+@Setter
+public class TaxExemptInfo {
+    private Set<DayOfWeek> weekDays;
+    private Set<VehicleType> vehicleTypes;
+    private HolidaysInfo holidaysInfo;
+
+    public HolidaysOfYear getHolidaysByYear(int year) {
+        return holidaysInfo.getHolidaysByYear(year);
+    }
+
+}

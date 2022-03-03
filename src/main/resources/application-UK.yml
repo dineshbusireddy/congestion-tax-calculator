@@ -1,0 +1,58 @@
+currency: EUR
+
+single-charge:
+  time-in-minutes: 70
+
+maximum-tax-per-day-in-seks: 6
+
+tax-exempt:
+  weekDays:
+    - SUNDAY
+  vehicleTypes:
+    - Busses
+    - Emergency
+    - Diplomat
+    - Military
+    - Foreign
+  holidaysInfo:
+    years:
+      - year: 2013
+        months:
+          - month: JANUARY
+            holidays: 1
+          - month: MARCH
+            holidays: 28 , 29
+          - month: APRIL
+            holidays: 1, 30
+          - month: MAY
+            holidays: 1, 8, 9
+          - month: JUNE
+            holidays: 5, 6, 21
+          - month: JULY
+          - month: NOVEMBER
+            holidays: 1
+          - month: DECEMBER
+            holidays: 24, 25, 26, 31
+
+tax-intervals:
+  intervals:
+    - interval: "06:00 - 06:29"
+      price: 1
+    - interval: "06:30 - 06:59"
+      price: 2
+    - interval: "07:00 - 07:59"
+      price: 3
+    - interval: "08:00 - 08:29"
+      price: 2
+    - interval: "08:30 - 14:59"
+      price: 1
+    - interval: "15:00 - 15:29"
+      price: 2
+    - interval: "15:30 - 16:59"
+      price: 3
+    - interval: "17:00 - 17:59"
+      price: 2
+    - interval: "18:00 - 18:29"
+      price: 1
+    - interval: "18:30 - 05:59"
+      price: 0
