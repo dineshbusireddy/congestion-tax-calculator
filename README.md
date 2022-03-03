@@ -16,7 +16,7 @@ Or
 **Command to build with Unit test cases and up server**
 > mvn clean install && java -jar target/congestion-tax-calculator-1.0-SNAPSHOT.jar
 
-**Commands to test for other city ex: UK**
+**Commands to test for other city example: UK**
 > mvn spring-boot:run -Dspring-boot.run.profiles=UK
 
 - Unit testcase results exported as html file in the path **/source_files/Test_Results_CongestionTaxControllerTest.html**
