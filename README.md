@@ -26,11 +26,11 @@ Or
 - api resource path: **/api/v1/congestion-tax/calculator**
   
   Ex: **http://localhost:8585/api/v1/congestion-tax/calculator**
-  
-  ![Alt text](https://github.com/dineshbusireddy/congestion-tax-calculator/blob/master/source_files/documentation.PNG "Swagger UI")
+
+  ![Alt text](https://github.com/dineshbusireddy/congestion-tax-calculator/blob/master/source_files/postman.PNG "Postman")  
 - Documentation path(Swagger): **http://localhost:8585/swagger-ui.html**
-  
-   ![Alt text](https://github.com/dineshbusireddy/congestion-tax-calculator/blob/master/source_files/postman.PNG "Postman")
+
+  ![Alt text](https://github.com/dineshbusireddy/congestion-tax-calculator/blob/master/source_files/documentation.PNG "Swagger UI")
   
 **Sample payloads:**
 
